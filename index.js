@@ -22,31 +22,66 @@
     if(!wasOpen) item.classList.add('open');
   }
 
-  /* ===== Infinite branches slider (auto-scroll only) ===== */
+    /* ===== Infinite branches carousel: 5 real cards, no duplicates ===== */
   (function(){
     const track = document.getElementById('branchTrack');
-    let halfWidth = 0;
-    let autoScroll = true;
-    const speed = 0.6; // px per frame
+    const viewport = track ? track.parentElement : null;
+    if(!track || !viewport) return;
 
-    function measure(){ halfWidth = track.scrollWidth / 2; }
-    window.addEventListener('load', measure);
-    window.addEventListener('resize', measure);
-    measure();
+    let timer = null;
+    let paused = false;
+    let isAnimating = false;
+    const interval = 2600;
+    const duration = 650;
 
-    function loop(){
-      if(autoScroll){
-        track.scrollLeft += speed;
-        if(track.scrollLeft >= halfWidth){ track.scrollLeft -= halfWidth; }
-      }
-      requestAnimationFrame(loop);
+    function getStep(){
+      const card = track.querySelector('.branch-card');
+      if(!card) return 0;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return card.getBoundingClientRect().width + gap;
     }
-    requestAnimationFrame(loop);
 
-    track.addEventListener('mouseenter', () => autoScroll = false);
-    track.addEventListener('mouseleave', () => autoScroll = true);
-    track.addEventListener('touchstart', () => autoScroll = false, {passive:true});
-    track.addEventListener('touchend', () => autoScroll = true, {passive:true});
+    function next(){
+      if(paused || isAnimating || track.children.length < 2) return;
+      const step = getStep();
+      if(!step) return;
+
+      isAnimating = true;
+      track.style.transition = `transform ${duration}ms cubic-bezier(.2,.7,.2,1)`;
+      track.style.transform = `translate3d(${-step}px,0,0)`;
+
+      track.addEventListener('transitionend', function onEnd(){
+        track.removeEventListener('transitionend', onEnd);
+        track.style.transition = 'none';
+        track.appendChild(track.firstElementChild);
+        track.style.transform = 'translate3d(0,0,0)';
+        // Force the browser to commit the reset before enabling animation again.
+        track.offsetHeight;
+        isAnimating = false;
+      }, {once:true});
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(next, interval);
+    }
+    function stop(){
+      if(timer){ clearInterval(timer); timer = null; }
+    }
+
+    viewport.addEventListener('mouseenter', () => { paused = true; });
+    viewport.addEventListener('mouseleave', () => { paused = false; });
+    viewport.addEventListener('touchstart', () => { paused = true; }, {passive:true});
+    viewport.addEventListener('touchend', () => { paused = false; }, {passive:true});
+    viewport.addEventListener('touchcancel', () => { paused = false; }, {passive:true});
+
+    window.addEventListener('resize', () => {
+      track.style.transition = 'none';
+      track.style.transform = 'translate3d(0,0,0)';
+      isAnimating = false;
+    });
+
+    start();
   })();
 
   /* ===== Scrollspy: activate section when it reaches 40% of viewport ===== */
