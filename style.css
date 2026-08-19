@@ -169,7 +169,7 @@
     .hero{
       min-height:calc(100svh - var(--header-h));
       height:calc(100svh - var(--header-h));
-      background-size:contain;
+      background-size:cover;
       background-position:center center;
       background-repeat:no-repeat;
     }
