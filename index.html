@@ -227,30 +227,61 @@
     <span class="eyebrow">OUR BRANCHES</span>
     <h2>Our Branches Across Egypt</h2>
   </div>
-  <div class="branch-scroller">
+
+  <div class="branch-scroller" id="branchScroller">
     <div class="branch-track" id="branchTrack">
-      <!-- set A -->
       <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Abassia+Cairo" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Abassia in Google Maps">
-        <div class="img-wrap"><img src="https://picsum.photos/seed/abassia/400/300" alt="Abassia branch"></div>
+        <div class="img-wrap"><img src="https://picsum.photos/seed/abassia/400/300" alt="Abassia branch" loading="lazy"></div>
         <div class="info"><h4>Abassia</h4><span>📍 Cairo</span></div>
       </a>
+
       <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Dandy+Mall+Cairo" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Dandy Mall in Google Maps">
-        <div class="img-wrap"><img src="https://picsum.photos/seed/dandymall/400/300" alt="Dandy Mall branch"></div>
+        <div class="img-wrap"><img src="https://picsum.photos/seed/dandymall/400/300" alt="Dandy Mall branch" loading="lazy"></div>
         <div class="info"><h4>Dandy Mall</h4><span>📍 Cairo</span></div>
       </a>
+
       <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+City+Stars+Nasr+City" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express City Stars in Google Maps">
-        <div class="img-wrap"><img src="https://picsum.photos/seed/citystars/400/300" alt="City Stars branch"></div>
+        <div class="img-wrap"><img src="https://picsum.photos/seed/citystars/400/300" alt="City Stars branch" loading="lazy"></div>
         <div class="info"><h4>City Stars</h4><span>📍 Nasr City</span></div>
       </a>
+
       <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Rana+Mall+New+Cairo" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Rana Mall in Google Maps">
-        <div class="img-wrap"><img src="https://picsum.photos/seed/ranamall/400/300" alt="Rana Mall branch"></div>
+        <div class="img-wrap"><img src="https://picsum.photos/seed/ranamall/400/300" alt="Rana Mall branch" loading="lazy"></div>
         <div class="info"><h4>Rana Mall</h4><span>📍 New Cairo</span></div>
       </a>
+
       <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Mall+of+Arabia+6th+of+October" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Mall of Arabia in Google Maps">
-        <div class="img-wrap"><img src="https://picsum.photos/seed/mallofarabia/400/300" alt="Mall of Arabia branch"></div>
+        <div class="img-wrap"><img src="https://picsum.photos/seed/mallofarabia/400/300" alt="Mall of Arabia branch" loading="lazy"></div>
         <div class="info"><h4>Mall of Arabia</h4><span>📍 6th of October</span></div>
       </a>
+
+      <!-- Placeholder branch: change the data/location when ready -->
+      <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Maxim+Mall+New+Cairo" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Maxim Mall in Google Maps">
+        <div class="img-wrap"><img src="https://picsum.photos/seed/maximmall/400/300" alt="Maxim Mall branch" loading="lazy"></div>
+        <div class="info"><h4>Maxim Mall</h4><span>📍 New Cairo</span></div>
+      </a>
+
+      <!-- Placeholder branch: change the data/location when ready -->
+      <a class="branch-card" href="https://www.google.com/maps/search/?api=1&query=Tarabot+Express+Nasr+City+Cairo" target="_blank" rel="noopener noreferrer" aria-label="Open Tarabot Express Nasr City in Google Maps">
+        <div class="img-wrap"><img src="https://picsum.photos/seed/nasrcity/400/300" alt="Nasr City branch" loading="lazy"></div>
+        <div class="info"><h4>Nasr City</h4><span>📍 Cairo</span></div>
+      </a>
     </div>
+  </div>
+
+  <!-- Manual carousel navigation -->
+  <div class="branch-controls" aria-label="Branch carousel controls">
+    <button class="branch-nav-btn" id="branchPrev" type="button" aria-label="Previous branch">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <button class="branch-nav-btn" id="branchNext" type="button" aria-label="Next branch">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 </section>
 
@@ -344,6 +375,13 @@
   </div>
 </footer>
 
+
+<!-- ===== GO TO TOP ===== -->
+<button class="go-top" id="goTop" type="button" aria-label="Go to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <!-- ===== GALLERY LIGHTBOX ===== -->
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Gallery image preview">
